@@ -1,0 +1,1 @@
+** A starting place for a discord bot. **
