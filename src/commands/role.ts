@@ -1,11 +1,17 @@
-import { Message } from 'discord.js';
-import { Icommand } from './command';
+import { IBotCommand, IBotMessage, IBotCommandHelp } from "../interfaces";
+import logger from "../utility/logger";
 
-const name = 'role';
-export function role(args: any[]) {
-  args[0]?.channel.send('were here');
-};
+export default class role implements IBotCommand {
+  public get name(): string { return this._name };
 
+  private _name: string = 'role';
 
-export {name};
-export {role as command};
+  public async run(msg: string): Promise<void> {
+    logger.log('info', 'we in');
+  }
+
+  public getHelp(): string{
+    logger.log('info', 'we in help');
+    return 'This does stuff';
+  }
+}

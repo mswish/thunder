@@ -5,7 +5,7 @@ const myLevels = {
     error: 0,
     warning: 1,
     debug: 2,
-    data: 3
+    info: 3
   }
 }
 
@@ -23,7 +23,7 @@ const logger = winston.createLogger({
       error: 'red',
       warning: 'yellow',
       debug: 'green',
-      data: 'blue'
+      info: 'blue'
   }
     }),
     winston.format.timestamp({
@@ -32,7 +32,7 @@ const logger = winston.createLogger({
     winston.format.printf(info => `${info.timestamp} - ${info.level}: ${info.message}`)
   ),
   transports: [
-    new winston.transports.Console({level: 'data'}),
+    new winston.transports.Console({level: 'info'}),
     new winston.transports.File({filename: 'error.log', level: 'error'})
   ]
 });

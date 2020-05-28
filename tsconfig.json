@@ -6,6 +6,7 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "sourceMap": false,
+    "target": "es5",
     "outDir": "./dist/"
   },
   "include": [
