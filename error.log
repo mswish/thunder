@@ -1,0 +1,10 @@
+05-30-2020 | 13:50:23 - [31merror[39m: Cannot read property 'hasPermission' of undefined
+05-30-2020 | 14:07:37 - [31merror[39m: Unknown Message
+05-30-2020 | 14:08:38 - [31merror[39m: Unknown Message
+05-30-2020 | 14:09:43 - [31merror[39m: Invalid Form Body
+message_id: Value "the" is not snowflake.
+06-09-2020 | 17:49:23 - [31merror[39m: args[1].toLower is not a function
+06-09-2020 | 17:49:44 - [31merror[39m: args[1].ToLower is not a function
+06-11-2020 | 14:00:09 - [31merror[39m: MessageEmbed field names may not be empty.
+06-11-2020 | 17:01:29 - [31merror[39m: Cannot read property 'name' of undefined
+06-11-2020 | 17:05:43 - [31merror[39m: Cannot read property 'name' of undefined

@@ -1,3 +1,5 @@
+import { Message, Client, MessageEmbed } from "discord.js";
+
 export interface IBot {
   readonly commands: IBotCommand[]
   readonly allUsers: IUser[]
@@ -7,8 +9,8 @@ export interface IBot {
 
 export interface IBotCommand {
   readonly name: string
-  getHelp(): string
-  run(msg: string): Promise<void>
+  getHelp(res: MessageEmbed): MessageEmbed
+  run(args: any[], message): Promise<void>
 }
 
 export interface IBotConfig {

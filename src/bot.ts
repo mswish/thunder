@@ -1,4 +1,4 @@
-import { Client } from 'discord.js';
+import { Client, MessageEmbed, PresenceData, Presence } from 'discord.js';
 import * as path from 'path';
 import logger from './utility/logger';
 import {
@@ -32,7 +32,7 @@ export class Bot implements IBot {
 
     this.loadCommands('./commands');
 
-    if(!this._config.token) { 
+    if(!this._config.token) {
       logger.log('error', 'Invalid Discord token, exiting.');
       throw new Error('Invalid Discord token. Termination imminent.');
     };
@@ -42,21 +42,39 @@ export class Bot implements IBot {
     this._client.on('ready', async () => {
       logger.log('debug', `Ready and waiting`);
       this._botId = this._client.user.id;
+      this._client.user.setPresence({
+        status: 'dnd',
+        activity: {
+          name: '| Use ?help for commands |',
+          type: 'LISTENING' 
+        }
+      })
     });
+
 
     this._client.on('message', async (message) => {
       if(message.content.slice(0, this._config.prefix.length) === this._config.prefix) {
         if(message.author.id !== this._botId) {
           const content = message.cleanContent;
           const args = content.slice(this._config.prefix.length, content.length).split(' ');
+
+          if(args[0] === 'help') {
+            const res = new MessageEmbed();
+            for(const cmds of this._commands) {
+              cmds.getHelp(res);
+            }
+            message.channel.send(res);
+            return;
+          }
+
           for(const cmds of this._commands) {
             try {
               if(args[0] === cmds.name) {
-
-               const res = await cmds.run(message.cleanContent);
+                logger.log('info', args.toString());
+                const res = await cmds.run(args, message);
               }
             } catch (err) {
-              logger.log('err', err);
+              logger.log('error', err);
             }
           }
         }
@@ -71,7 +89,6 @@ private loadCommands(commandsPaths: string) {
   for (const cmdName of this._config.commands) {
       const cmdClass = require(`${commandsPaths}/${cmdName}`).default
       const command = new cmdClass() as IBotCommand
-      //command.init(this, path.resolve(`${dataPath}/${cmdName}`))
       this._commands.push(command)
       logger.info(`command "${cmdName}" loaded...`);
   }
