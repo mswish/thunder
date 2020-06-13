@@ -7,7 +7,7 @@ export default class hello implements IBotCommand {
 
     private _name: string = 'hello';
 
-    public async run(args, message): Promise<void> {
+    public async run(args, message): 
             message.channel.send(`Hello! I hope you have a wonderful day. Thanks for saying hello to me.`);
 
        
