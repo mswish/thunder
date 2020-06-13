@@ -2,7 +2,7 @@ import { IBotCommand } from "../interfaces";
 import logger from "../utility/logger";
 import { Client, Message, MessageEmbed } from "discord.js";
 
-export default class clear implements IBotCommand {
+export default class hello implements IBotCommand {
     public get name(): string { return this._name};
 
     private _name: string = 'hello';
