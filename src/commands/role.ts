@@ -42,11 +42,16 @@ export default class role implements IBotCommand {
           message.member.roles.add(fill);
           message.channel.send(`Role added to ${message.author.username}: fill`);
           break;
-        case 'player':
-          const player = await message.guild.roles.fetch('700094022680576140');
-          message.member.roles.add(player);
-          message.channel.send(`Role added to ${message.author.username}: player`);
+        case 'student':
+          const student = await message.guild.roles.fetch('730022599060488202');
+          message.member.roles.add(student);
+          message.channel.send(`Role added to ${message.author.username}: student`);
           break;
+        case 'inhouse':
+            const inhouse = await message.guild.roles.fetch('735243723125817437');
+            message.member.roles.add(inhouse);
+            message.channel.send(`Role added to ${message.author.username}: inhouse`);
+            break;
         default: {
           message.channel.send(`No role for ${roleType}. Please pass valid role.`);
         }
@@ -55,7 +60,7 @@ export default class role implements IBotCommand {
   }
 
   public getHelp(res: MessageEmbed): MessageEmbed{
-    res.addField('Role: adds a role to the guild member', 'Available roles: top, mid, bot, jungle, support, fill and player.');
+    res.addField('Role: adds a role to the guild member', 'Available roles: top, mid, bot, jungle, support, fill, and inhouse.');
     return res;
   }
 }
