@@ -8,7 +8,7 @@ export default class scrim implements IBotCommand {
     private _name: string = 'scrim';
 
     public async run(args, message): Promise<void> {
-        logger.log('debug', `run ${ name() } `);
+        logger.log('debug', `run ${ _name } `);
     }
 
     public getHelp(res: MessageEmbed): MessageEmbed {
