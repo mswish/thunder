@@ -3,7 +3,12 @@ import config from '../../config.json'
 import logger from './logger';
 
 async function connectDatabase() {
-    const sequelize = new Sequelize(config.database);
+    const sequelize = new Sequelize(
+        config.database,
+        {
+            ssl: true,
+        }
+    );
 
     try {
         await sequelize.authenticate();
