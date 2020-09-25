@@ -1,14 +1,15 @@
 import { IBotCommand } from '../interfaces';
 import logger from '../utility/logger';
-import { MessageEmbed } from 'discord';
-
+import { MessageEmbed } from 'discord.js';
+import connectDatabase from '../utility/database';
 export default class scrim implements IBotCommand {
     public get name(): string { return this._name };
 
     private _name: string = 'scrim';
 
     public async run(args, message): Promise<void> {
-        logger.log('debug', `run ${ _name } `);
+        logger.log('debug', `run ${ this._name } `);
+        connectDatabase();
     }
 
     public getHelp(res: MessageEmbed): MessageEmbed {

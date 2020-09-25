@@ -45,8 +45,8 @@ export class Bot implements IBot {
       this._client.user.setPresence({
         status: 'dnd',
         activity: {
-          name: '| Use ?help for commands |',
-          type: 'LISTENING' 
+          name: `| Use ${ this._config.prefix }help for commands |`,
+          type: 'LISTENING'
         }
       })
     });
