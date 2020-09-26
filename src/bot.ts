@@ -9,9 +9,8 @@ import {
   IBot,
   IBotConfig
 } from './interfaces';
-interface command {
-  arguments: any[];
-}
+import connectDatabase from './utility/database';
+
 
 export class Bot implements IBot {
   public get commands(): IBotCommand[] { return this.commands }
@@ -31,6 +30,8 @@ export class Bot implements IBot {
     this._config = config;
 
     this.loadCommands('./commands');
+
+    connectDatabase();
 
     if(!this._config.token) {
       logger.log('error', 'Invalid Discord token, exiting.');

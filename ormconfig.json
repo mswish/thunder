@@ -1,0 +1,11 @@
+{
+    "type": "postgres",
+    "username": "doadmin",
+    "password": "scvcg5eiks8dt7pj",
+    "database": "pooler",
+    "synchronize": true,
+    "logging": true,
+    "entities": [
+        "src/entity/**/*.ts"
+    ]
+}

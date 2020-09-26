@@ -1,14 +1,14 @@
 import { IBotCommand} from "../interfaces";
 import logger from "../utility/logger";
 import { MessageEmbed } from "discord.js";
-//import * as tails from '../images/flip/tails.jpg';
+
 export default class clear implements IBotCommand {
     public get name(): string { return this._name};
 
     private _name: string = 'flip';
 
     public async run(args, message): Promise<void> {
-        if(!args[1]) { 
+        if(!args[1]) {
             message.channel.send("Flip requires a second argument.");
             return;
         }
